@@ -55,3 +55,8 @@ body { color: var(--ink); background: #fff; }
 /* Disclosure (FAQ) refinements */
 summary::-webkit-details-marker { display: none; }
 details[open] .faq-plus { transform: rotate(45deg); }
+
+/* Evita que la barra CTA fija (mobile) tape el contenido del footer */
+@media (max-width: 1023px) {
+  body { padding-bottom: 76px; } /* sticky-cta-spacer */
+}
