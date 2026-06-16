@@ -31,7 +31,7 @@ export default function LeadMagnet() {
             <div className="text-white">
               <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-wider text-gold">Guía gratuita en PDF</span>
               <h2 className="mt-4 font-display text-[clamp(24px,3.2vw,34px)] font-bold leading-tight">
-                ¿Cómo elegir la preparatoria ideal para tu hijo?
+                ¿Cómo elegir la preparatoria ideal? Descarga nuestra guía gratuita
               </h2>
               <p className="mt-3 max-w-md text-[15.5px] text-[#d3e0f2]">
                 Descarga gratis nuestra guía con los 7 criterios que toda familia debe evaluar antes de decidir. Práctica, breve y sin tecnicismos.

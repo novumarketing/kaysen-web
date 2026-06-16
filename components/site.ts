@@ -7,7 +7,7 @@ export const EMAIL = "contacto@colegiokaysen.edu.mx";
 const wa = (msg: string) => `https://wa.me/${PHONE_RAW}?text=${encodeURIComponent(msg)}`;
 
 // Mensaje predeterminado solicitado (punto 7)
-export const WA = wa("Hola, vi la web de Kaysen y me gustaría solicitar informes sobre el proceso de inscripción.");
+export const WA = wa("Hola, me pongo en contacto con Kaysen para solicitar informes sobre el proceso de inscripción para el nuevo ciclo escolar.");
 export const WA_RECORRIDO = wa("Hola, vi la web de Kaysen y me gustaría agendar un recorrido por las instalaciones.");
 // Alias para no romper imports previos
 export const WA_VISIT = WA_RECORRIDO;

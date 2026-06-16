@@ -24,7 +24,10 @@ export default function Footer() {
         </div>
         <div className="flex flex-wrap items-center justify-between gap-2.5 pt-6 text-[13px] text-[#90a3ba]">
           <span>© {new Date().getFullYear()} Colegio Universitario Kaysen. Todos los derechos reservados.</span>
-          <span>Desarrollado por <a href="https://novu-web-ten.vercel.app" target="_blank" rel="noopener noreferrer" className="font-semibold text-gold">NOVU</a></span>
+          <div className="flex items-center gap-4">
+            <Link href="/aviso-privacidad" className="transition hover:text-white">Aviso de Privacidad</Link>
+            <span>Desarrollado por <a href="https://novu-web-ten.vercel.app" target="_blank" rel="noopener noreferrer" className="font-semibold text-gold">NOVU</a></span>
+          </div>
         </div>
       </div>
     </footer>
