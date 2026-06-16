@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0f2a4a;
+  --blue: #2563c9;
+  --gold: #e8a93b;
+  --ink: #16263b;
+  --muted: #5b6b7e;
+  --line: #e4ecf5;
+}
+
+* { -webkit-font-smoothing: antialiased; }
+html { scroll-behavior: smooth; }
+body { color: var(--ink); background: #fff; }
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-6xl px-6; }
+  .grad-text {
+    background: linear-gradient(100deg, var(--blue), var(--gold));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-display font-semibold transition;
+    @apply px-6 py-3 text-sm;
+  }
+  .btn-primary {
+    background: linear-gradient(120deg, var(--blue), var(--navy));
+    @apply text-white shadow-[0_10px_26px_rgba(37,99,201,.32)] hover:-translate-y-0.5;
+  }
+  .btn-gold {
+    background: linear-gradient(120deg, var(--gold), #d18f24);
+    @apply text-white shadow-[0_10px_26px_rgba(232,169,59,.35)] hover:-translate-y-0.5;
+  }
+  .btn-ghost {
+    @apply bg-white text-navy border-[1.5px] border-line hover:border-blue hover:text-blue;
+  }
+  .kicker {
+    @apply font-display font-semibold text-[13px] tracking-[0.22em] uppercase text-gold;
+  }
+}
+
+@keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.animate-floaty { animation: floaty 5s ease-in-out infinite; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp .7s ease both; }
+.fade-up-1 { animation: fadeUp .7s ease .1s both; }
+.fade-up-2 { animation: fadeUp .7s ease .2s both; }
+.fade-up-3 { animation: fadeUp .7s ease .3s both; }
+
+/* Disclosure (FAQ) refinements */
+summary::-webkit-details-marker { display: none; }
+details[open] .faq-plus { transform: rotate(45deg); }
