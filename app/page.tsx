@@ -4,6 +4,7 @@ import { WA_RECORRIDO } from "@/components/site";
 import Testimonials from "@/components/Testimonials";
 import FaqAccordion from "@/components/FaqAccordion";
 import LeadMagnet from "@/components/LeadMagnet";
+import { GraduationCap, TrendingUp, Award } from "lucide-react";
 
 const highlights = [
   { icon: "🎓", title: "Listos para la universidad", desc: "Preparación enfocada en el examen de admisión y en las competencias que exige el nivel superior." },
@@ -51,8 +52,13 @@ export default function Home() {
           {/* Panel de confianza: el dato como protagonista */}
           <div className="relative">
             <div className="rounded-3xl bg-gradient-to-br from-navy to-blue p-8 text-center text-white shadow-soft">
-              <div className="font-display text-[88px] font-extrabold leading-none">98<span className="align-top text-4xl">%</span></div>
-              <div className="mt-1 text-[15px] font-medium text-[#d3e0f2]">de egresados ingresa a la universidad</div>
+              <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10">
+                <GraduationCap className="h-8 w-8 text-gold" strokeWidth={2} />
+              </div>
+              <div className="flex items-end justify-center font-display text-[88px] font-extrabold leading-none">98<span className="text-4xl">%</span></div>
+              <div className="mt-2 flex items-center justify-center gap-1.5 text-[15px] font-medium text-[#d3e0f2]">
+                <TrendingUp className="h-4 w-4 text-gold" aria-hidden /> de egresados ingresa a la universidad
+              </div>
               <div className="mt-7 grid grid-cols-3 gap-3 border-t border-white/15 pt-6">
                 <div><div className="font-display text-2xl font-extrabold text-gold">30+</div><div className="mt-1 text-[11.5px] text-[#c2d0e2]">años</div></div>
                 <div><div className="font-display text-2xl font-extrabold text-gold">18:1</div><div className="mt-1 text-[11.5px] text-[#c2d0e2]">alumnos/docente</div></div>
@@ -60,7 +66,7 @@ export default function Home() {
               </div>
             </div>
             <div className="absolute -left-5 -top-4 hidden animate-floaty items-center gap-2 rounded-2xl bg-white px-4 py-3 shadow-soft sm:flex">
-              <span className="text-xl">🏅</span><span className="font-display text-[13px] font-semibold text-navy">Validez oficial SEP</span>
+              <Award className="h-5 w-5 text-gold" aria-hidden /><span className="font-display text-[13px] font-semibold text-navy">Validez oficial SEP</span>
             </div>
           </div>
         </div>
