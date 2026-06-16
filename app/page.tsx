@@ -4,17 +4,17 @@ import { WA_RECORRIDO } from "@/components/site";
 import Testimonials from "@/components/Testimonials";
 import FaqAccordion from "@/components/FaqAccordion";
 import LeadMagnet from "@/components/LeadMagnet";
-import { GraduationCap, TrendingUp, Award } from "lucide-react";
+import { GraduationCap, TrendingUp, Award, HeartHandshake, Sprout, FlaskConical, BookOpen, Ruler } from "lucide-react";
 
 const highlights = [
-  { icon: "🎓", title: "Listos para la universidad", desc: "Preparación enfocada en el examen de admisión y en las competencias que exige el nivel superior." },
-  { icon: "🤝", title: "Acompañamiento cercano", desc: "Grupos reducidos, tutoría personalizada y orientación vocacional durante todo el bachillerato." },
-  { icon: "🌱", title: "Formación en valores", desc: "Educamos personas íntegras, responsables y comprometidas con su comunidad." },
+  { icon: GraduationCap, title: "Listos para la universidad", desc: "Preparación enfocada en el examen de admisión y en las competencias que exige el nivel superior." },
+  { icon: HeartHandshake, title: "Acompañamiento cercano", desc: "Grupos reducidos, tutoría personalizada y orientación vocacional durante todo el bachillerato." },
+  { icon: Sprout, title: "Formación en valores", desc: "Educamos personas íntegras, responsables y comprometidas con su comunidad." },
 ];
 const areas = [
-  { icon: "🔬", title: "Ciencias Experimentales", desc: "Medicina, ingenierías y ciencias de la salud." },
-  { icon: "📚", title: "Ciencias Sociales", desc: "Derecho, comunicación, psicología y administración." },
-  { icon: "📐", title: "Físico-Matemáticas", desc: "Ingenierías, arquitectura y tecnología." },
+  { icon: FlaskConical, title: "Ciencias Experimentales", desc: "Medicina, ingenierías y ciencias de la salud." },
+  { icon: BookOpen, title: "Ciencias Sociales", desc: "Derecho, comunicación, psicología y administración." },
+  { icon: Ruler, title: "Físico-Matemáticas", desc: "Ingenierías, arquitectura y tecnología." },
 ];
 
 export default function Home() {
@@ -34,7 +34,7 @@ export default function Home() {
               El <span className="grad-text">98%</span> de nuestros egresados llega a la universidad
             </h1>
             <p className="fade-up-2 mt-5 max-w-xl text-lg text-muted">
-              En Colegio Kaysen formamos bachilleres preparados para aprobar el examen de admisión y triunfar en el nivel superior. Excelencia académica, valores y acompañamiento cercano, en el corazón de Tulancingo.
+              Formamos bachilleres listos para aprobar el examen de admisión y triunfar en la universidad. Excelencia académica y acompañamiento cercano, en el corazón de Tulancingo.
             </p>
             <div className="fade-up-3 mt-8 flex flex-wrap gap-3.5">
               <a href={WA_RECORRIDO} target="_blank" rel="noopener noreferrer" className="btn btn-gold">Agendar Recorrido</a>
@@ -77,13 +77,16 @@ export default function Home() {
         <div className="wrap">
           <SectionHead center kicker="Por qué Kaysen" title="Una preparatoria que forma personas, no solo alumnos" sub="Tres pilares que distinguen la experiencia educativa en nuestro colegio." />
           <div className="grid gap-6 md:grid-cols-3">
-            {highlights.map((h) => (
+            {highlights.map((h) => {
+              const Icon = h.icon;
+              return (
               <div key={h.title} className="rounded-xl2 border border-line bg-white p-8 transition hover:-translate-y-1.5 hover:border-[#cfe0fb] hover:shadow-soft">
-                <div className="mb-4 grid h-14 w-14 place-items-center rounded-[15px] bg-gradient-to-br from-blue to-navy text-2xl text-white">{h.icon}</div>
+                <div className="mb-4 grid h-14 w-14 place-items-center rounded-[15px] bg-gradient-to-br from-blue to-navy text-white"><Icon className="h-7 w-7" strokeWidth={1.75} aria-hidden /></div>
                 <h3 className="font-display text-[19px] font-semibold text-navy">{h.title}</h3>
                 <p className="mt-2 text-[14.5px] text-muted">{h.desc}</p>
               </div>
-            ))}
+              );
+            })}
           </div>
           <div className="mt-10 text-center"><Link href="/nosotros" className="font-semibold text-blue hover:underline">Conoce más sobre el colegio →</Link></div>
         </div>
@@ -94,13 +97,16 @@ export default function Home() {
         <div className="wrap">
           <SectionHead center kicker="Oferta académica" title="Tres áreas para tres futuros distintos" sub="En los últimos semestres tu hijo elige la especialización alineada con la carrera que quiere estudiar." />
           <div className="grid gap-6 md:grid-cols-3">
-            {areas.map((a) => (
+            {areas.map((a) => {
+              const Icon = a.icon;
+              return (
               <div key={a.title} className="rounded-xl2 border border-line bg-white p-8">
-                <div className="mb-4 grid h-14 w-14 place-items-center rounded-[15px] bg-gradient-to-br from-blue to-navy text-2xl text-white">{a.icon}</div>
+                <div className="mb-4 grid h-14 w-14 place-items-center rounded-[15px] bg-gradient-to-br from-blue to-navy text-white"><Icon className="h-7 w-7" strokeWidth={1.75} aria-hidden /></div>
                 <h3 className="font-display text-[19px] font-semibold text-navy">{a.title}</h3>
                 <p className="mt-2 text-[14.5px] text-muted">{a.desc}</p>
               </div>
-            ))}
+              );
+            })}
           </div>
           <div className="mt-10 text-center"><Link href="/oferta" className="font-semibold text-blue hover:underline">Ver el plan de estudios completo →</Link></div>
         </div>

@@ -6,6 +6,7 @@
   --navy: #0f2a4a;
   --blue: #2563c9;
   --gold: #e8a93b;
+  --gold-ink: #946514;
   --ink: #16263b;
   --muted: #5b6b7e;
   --line: #e4ecf5;
@@ -34,13 +35,17 @@ body { color: var(--ink); background: #fff; }
   }
   .btn-gold {
     background: linear-gradient(120deg, var(--gold), #d18f24);
-    @apply text-white shadow-[0_10px_26px_rgba(232,169,59,.35)] hover:-translate-y-0.5;
+    @apply text-navy shadow-[0_10px_26px_rgba(232,169,59,.35)] hover:-translate-y-0.5;
   }
   .btn-ghost {
     @apply bg-white text-navy border-[1.5px] border-line hover:border-blue hover:text-blue;
   }
   .kicker {
     @apply font-display font-semibold text-[13px] tracking-[0.22em] uppercase text-gold;
+  }
+  .kicker-ink {
+    @apply font-display font-semibold text-[13px] tracking-[0.22em] uppercase;
+    color: var(--gold-ink);
   }
 }
 
@@ -60,4 +65,14 @@ details[open] .faq-plus { transform: rotate(45deg); }
 /* Evita que la barra CTA fija (mobile) tape el contenido del footer */
 @media (max-width: 1023px) {
   body { padding-bottom: 76px; } /* sticky-cta-spacer */
+}
+
+/* Accesibilidad: indicador de foco visible por teclado (WCAG 2.4.7) */
+@layer base {
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible,
+  [tabindex="0"]:focus-visible {
+    @apply rounded-md outline-none ring-2 ring-blue ring-offset-2 ring-offset-white;
+  }
 }
