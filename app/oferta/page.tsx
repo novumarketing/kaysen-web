@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FlaskConical, BookOpen, Ruler } from "lucide-react";
 import { PageHero, SectionHead, CtaBand } from "@/components/ui";
 import { WA } from "@/components/site";
 
@@ -8,9 +9,9 @@ export const metadata: Metadata = {
 };
 
 const areas = [
-  { icon: "🔬", title: "Ciencias Experimentales", desc: "Ruta ideal hacia medicina, enfermería, ingenierías y ciencias de la salud.", items: ["Laboratorios de Física, Química y Biología", "Preparación para examen de admisión", "Proyectos de investigación"] },
-  { icon: "📚", title: "Ciencias Sociales y Humanidades", desc: "Para quienes buscan derecho, comunicación, psicología o administración.", items: ["Pensamiento crítico y argumentación", "Talleres de oratoria y escritura", "Orientación vocacional"] },
-  { icon: "📐", title: "Físico-Matemáticas", desc: "Base sólida para ingenierías, arquitectura y carreras de tecnología.", items: ["Matemáticas aplicadas", "Cómputo y programación", "Olimpiadas del conocimiento"] },
+  { icon: FlaskConical, title: "Ciencias Experimentales", desc: "Ruta ideal hacia medicina, enfermería, ingenierías y ciencias de la salud.", items: ["Laboratorios de Física, Química y Biología", "Preparación para examen de admisión", "Proyectos de investigación"] },
+  { icon: BookOpen, title: "Ciencias Sociales y Humanidades", desc: "Para quienes buscan derecho, comunicación, psicología o administración.", items: ["Pensamiento crítico y argumentación", "Talleres de oratoria y escritura", "Orientación vocacional"] },
+  { icon: Ruler, title: "Físico-Matemáticas", desc: "Base sólida para ingenierías, arquitectura y carreras de tecnología.", items: ["Matemáticas aplicadas", "Cómputo y programación", "Olimpiadas del conocimiento"] },
 ];
 const plan = [
   { s: "1º y 2º semestre", d: "Tronco común: matemáticas, química, ética, lengua, informática y formación básica." },
@@ -29,16 +30,19 @@ export default function Oferta() {
         <div className="wrap">
           <SectionHead center kicker="Áreas de especialización" title="Elige el camino que más te apasiona" sub="En quinto y sexto semestre cada alumno se especializa según la carrera que desea estudiar." />
           <div className="grid gap-6 md:grid-cols-3">
-            {areas.map((a) => (
+            {areas.map((a) => {
+              const Icon = a.icon;
+              return (
               <div key={a.title} className="rounded-xl2 border border-line bg-white p-8 transition hover:-translate-y-1.5 hover:border-[#cfe0fb] hover:shadow-soft">
-                <div className="mb-4 grid h-14 w-14 place-items-center rounded-[15px] bg-gradient-to-br from-blue to-navy text-2xl text-white">{a.icon}</div>
+                <div className="mb-4 grid h-14 w-14 place-items-center rounded-[15px] bg-gradient-to-br from-blue to-navy text-white"><Icon className="h-7 w-7" strokeWidth={1.75} aria-hidden /></div>
                 <h3 className="font-display text-[19px] font-semibold text-navy">{a.title}</h3>
                 <p className="mt-2 text-[14.5px] text-muted">{a.desc}</p>
                 <ul className="mt-3.5 grid gap-2">
                   {a.items.map((it) => (<li key={it} className="flex items-center gap-2.5 text-[13.8px] text-ink"><span className="font-extrabold text-blue">✓</span> {it}</li>))}
                 </ul>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
