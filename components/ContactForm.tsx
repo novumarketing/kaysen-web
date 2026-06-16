@@ -15,7 +15,7 @@ export default function ContactForm() {
         <div className="py-10 text-center">
           <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-full bg-blue-soft text-2xl">✓</div>
           <h3 className="font-display text-xl font-semibold text-navy">¡Gracias!</h3>
-          <p className="mt-2 text-[14.5px] text-muted">Recibimos tus datos. Un asesor del colegio te contactará muy pronto.</p>
+          <p className="mt-2 text-[14.5px] text-muted">Recibimos tus datos. Un asesor del colegio te contactará hoy mismo en horario escolar.</p>
         </div>
       ) : (
         <>

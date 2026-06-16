@@ -12,7 +12,7 @@ export function SectionHead({ kicker, title, sub, center, light }:
   { kicker: string; title: string; sub?: string; center?: boolean; light?: boolean }) {
   return (
     <div className={`mb-12 max-w-2xl ${center ? "mx-auto text-center" : ""}`}>
-      <span className="kicker">{kicker}</span>
+      <span className={light ? "kicker" : "kicker-ink"}>{kicker}</span>
       <h2 className={`mt-3.5 font-display text-[clamp(27px,3.4vw,40px)] font-bold ${light ? "text-white" : "text-navy"}`}>{title}</h2>
       {sub && <p className={`mt-3.5 text-[17px] ${light ? "text-[#c2d0e2]" : "text-muted"}`}>{sub}</p>}
     </div>
@@ -25,7 +25,7 @@ export function PageHero({ kicker, title, sub }: { kicker: string; title: ReactN
       <div className="pointer-events-none absolute -right-32 -top-40 h-[420px] w-[420px] rounded-full bg-[#cfe0fb] opacity-50 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-44 -left-32 h-[360px] w-[360px] rounded-full bg-[#fbe7c0] opacity-50 blur-3xl" />
       <div className="wrap relative z-10 py-16 text-center md:py-20">
-        <span className="kicker">{kicker}</span>
+        <span className="kicker-ink">{kicker}</span>
         <h1 className="mx-auto mt-4 max-w-3xl font-display text-[clamp(32px,4.6vw,50px)] font-extrabold leading-[1.1] tracking-tight text-navy">{title}</h1>
         <p className="mx-auto mt-5 max-w-2xl text-lg text-muted">{sub}</p>
       </div>
