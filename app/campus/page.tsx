@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FlaskConical, BookOpen, Laptop, Dumbbell, School, MapPin } from "lucide-react";
 import { PageHero, SectionHead, CtaBand } from "@/components/ui";
 import { WA_VISIT } from "@/components/site";
 
@@ -15,12 +16,12 @@ const gallery = [
   { t: "Vida estudiantil", cls: "bg-gradient-to-br from-[#5b8de8] to-blue", h: "h-[200px]" },
 ];
 const facilities = [
-  { icon: "🔬", t: "Laboratorios equipados", d: "Espacios de Física, Química y Biología para el aprendizaje práctico." },
-  { icon: "📚", t: "Biblioteca", d: "Acervo y áreas de estudio para la investigación y la lectura." },
-  { icon: "💻", t: "Salas de cómputo", d: "Equipo actualizado para clases de informática y programación." },
-  { icon: "🏀", t: "Áreas deportivas", d: "Canchas y espacios para la activación física y la convivencia." },
-  { icon: "🏛️", t: "Aulas cómodas", d: "Salones iluminados y pensados para grupos reducidos." },
-  { icon: "📍", t: "Ubicación céntrica", d: "En el corazón de Tulancingo, de fácil acceso para las familias." },
+  { icon: FlaskConical, t: "Laboratorios equipados", d: "Espacios de Física, Química y Biología para el aprendizaje práctico." },
+  { icon: BookOpen, t: "Biblioteca", d: "Acervo y áreas de estudio para la investigación y la lectura." },
+  { icon: Laptop, t: "Salas de cómputo", d: "Equipo actualizado para clases de informática y programación." },
+  { icon: Dumbbell, t: "Áreas deportivas", d: "Canchas y espacios para la activación física y la convivencia." },
+  { icon: School, t: "Aulas cómodas", d: "Salones iluminados y pensados para grupos reducidos." },
+  { icon: MapPin, t: "Ubicación céntrica", d: "En el corazón de Tulancingo, de fácil acceso para las familias." },
 ];
 
 export default function Campus() {
@@ -47,18 +48,21 @@ export default function Campus() {
         <div className="wrap">
           <SectionHead center kicker="Instalaciones" title="Todo lo que tu hijo necesita" />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {facilities.map((f) => (
+            {facilities.map((f) => {
+              const Icon = f.icon;
+              return (
               <div key={f.t} className="rounded-xl2 border border-line bg-white p-7">
-                <div className="mb-4 grid h-12 w-12 place-items-center rounded-[13px] bg-blue-soft text-2xl">{f.icon}</div>
+                <div className="mb-4 grid h-12 w-12 place-items-center rounded-[13px] bg-blue-soft"><Icon className="h-6 w-6 text-blue" strokeWidth={1.75} aria-hidden /></div>
                 <h3 className="font-display text-[17px] font-semibold text-navy">{f.t}</h3>
                 <p className="mt-2 text-[14px] text-muted">{f.d}</p>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <CtaBand title="Ven a conocer el campus en persona" sub="Agenda una visita guiada y recorre nuestras instalaciones con el equipo del colegio." href={WA_VISIT} label="Agendar una visita" />
+      <CtaBand title="Ven a conocer el campus en persona" sub="Agenda una visita guiada y recorre nuestras instalaciones con el equipo del colegio." href={WA_VISIT} label="Agendar Recorrido" />
     </main>
   );
 }
