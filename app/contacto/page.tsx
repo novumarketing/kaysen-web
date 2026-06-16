@@ -2,18 +2,12 @@ import type { Metadata } from "next";
 import { PageHero, SectionHead } from "@/components/ui";
 import { PHONE, EMAIL, ADDRESS, WA } from "@/components/site";
 import ContactForm from "@/components/ContactForm";
+import LazyMap from "@/components/LazyMap";
 
 export const metadata: Metadata = {
   title: "Contacto",
-  description: "Contacta al Colegio Universitario Kaysen en Tulancingo. Teléfono, correo, ubicación y formulario de informes.",
+  description: "Contacta a la Preparatoria Colegio Universitario Kaysen en Tulancingo, Hidalgo. Teléfono, correo, ubicación y formulario de informes.",
 };
-
-const faqs = [
-  { q: "¿Qué modalidad de bachillerato ofrecen?", a: "Bachillerato General con validez oficial ante la SEP (CCT 13PBH0319R), turno matutino, con tres áreas de especialización en quinto y sexto semestre." },
-  { q: "¿Cuándo puedo inscribir a mi hijo?", a: "Las inscripciones para el próximo ciclo escolar ya están abiertas. Te recomendamos solicitar informes pronto, ya que el cupo por grupo es limitado." },
-  { q: "¿Dónde están ubicados?", a: "En Morelos Oriente 304, Col. Centro, en el corazón de Tulancingo de Bravo, Hidalgo. Un punto céntrico y de fácil acceso." },
-  { q: "¿Ofrecen becas?", a: "Sí, contamos con apoyos y becas académicas sujetas a evaluación y disponibilidad. Pregunta por los requisitos al solicitar informes." },
-];
 
 function Info({ icon, title, children }: { icon: string; title: string; children: React.ReactNode }) {
   return (
@@ -44,19 +38,11 @@ export default function Contacto() {
         </div>
       </section>
 
-      <section className="bg-bg-2 py-20 md:py-24">
+      {/* Mapa con lazy loading (no afecta el LCP) */}
+      <section className="pb-20 md:pb-24">
         <div className="wrap">
-          <SectionHead center kicker="Preguntas frecuentes" title="Resuelve tus dudas" />
-          <div className="mx-auto max-w-3xl">
-            {faqs.map((f, i) => (
-              <details key={f.q} open={i === 0} className="mb-3.5 overflow-hidden rounded-2xl border border-line bg-white">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-3.5 px-5 py-5 font-display text-base font-semibold text-navy">
-                  {f.q}<span className="faq-plus text-2xl font-normal text-blue transition">+</span>
-                </summary>
-                <p className="px-5 pb-5 text-[14.8px] text-muted">{f.a}</p>
-              </details>
-            ))}
-          </div>
+          <SectionHead center kicker="Ubicación" title="Encuéntranos en el centro de Tulancingo" />
+          <LazyMap />
         </div>
       </section>
     </main>
