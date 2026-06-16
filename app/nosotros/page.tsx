@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookOpen, HeartHandshake, Lightbulb, ShieldCheck } from "lucide-react";
 import { PageHero, SectionHead, StatsBar, CtaBand } from "@/components/ui";
 import { WA_VISIT } from "@/components/site";
 
@@ -8,10 +9,10 @@ export const metadata: Metadata = {
 };
 
 const valores = [
-  { icon: "📖", title: "Compromiso académico", desc: "Buscamos la excelencia y el esfuerzo constante en cada alumno." },
-  { icon: "🤝", title: "Respeto", desc: "Una comunidad sana donde cada persona es valorada." },
-  { icon: "💡", title: "Pensamiento crítico", desc: "Formamos jóvenes que cuestionan, analizan y proponen." },
-  { icon: "🫶", title: "Responsabilidad", desc: "Hábitos y valores que acompañan al alumno toda la vida." },
+  { icon: BookOpen, title: "Compromiso académico", desc: "Buscamos la excelencia y el esfuerzo constante en cada alumno." },
+  { icon: HeartHandshake, title: "Respeto", desc: "Una comunidad sana donde cada persona es valorada." },
+  { icon: Lightbulb, title: "Pensamiento crítico", desc: "Formamos jóvenes que cuestionan, analizan y proponen." },
+  { icon: ShieldCheck, title: "Responsabilidad", desc: "Hábitos y valores que acompañan al alumno toda la vida." },
 ];
 
 export default function Nosotros() {
@@ -54,13 +55,16 @@ export default function Nosotros() {
         <div className="wrap">
           <SectionHead center kicker="Nuestros valores" title="Lo que vivimos cada día en el aula" />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {valores.map((v) => (
+            {valores.map((v) => {
+              const Icon = v.icon;
+              return (
               <div key={v.title} className="rounded-xl2 border border-line bg-white p-7 text-center">
-                <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-[15px] bg-gradient-to-br from-blue to-navy text-2xl text-white">{v.icon}</div>
+                <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-[15px] bg-gradient-to-br from-blue to-navy text-white"><Icon className="h-7 w-7" strokeWidth={1.75} aria-hidden /></div>
                 <h3 className="font-display text-[17px] font-semibold text-navy">{v.title}</h3>
                 <p className="mt-2 text-[14px] text-muted">{v.desc}</p>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -72,7 +76,7 @@ export default function Nosotros() {
         { n: "100%", l: "Validez oficial SEP" },
       ]} />
 
-      <CtaBand title="Conoce nuestra comunidad de cerca" sub="Te invitamos a una visita guiada para vivir el ambiente Kaysen." href={WA_VISIT} label="Agendar una visita" />
+      <CtaBand title="Conoce nuestra comunidad de cerca" sub="Te invitamos a una visita guiada para vivir el ambiente Kaysen." href={WA_VISIT} label="Agendar Recorrido" />
     </main>
   );
 }
