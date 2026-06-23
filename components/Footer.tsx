@@ -52,6 +52,10 @@ export default function Footer() {
       <div className="wrap" style={{ paddingTop: 28, paddingBottom: 28, marginTop: 48, borderTop: "1px solid rgba(255,255,255,.12)", display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "space-between", fontSize: 13 }}>
         <span>© 2026 Colegio Universitario Kaysen. Todos los derechos reservados.</span>
         <Link href="/aviso-privacidad" className="foot-link" style={{ color: "#9fb6bd", textDecoration: "none" }}>Aviso de privacidad</Link>
+        <span>
+          Desarrollado por{" "}
+          <a href="https://wa.me/527711238085" target="_blank" rel="noopener noreferrer" className="foot-link" style={{ color: "var(--cyan)", textDecoration: "none", fontWeight: 700 }}>NOVU</a>
+        </span>
         <span>Incorporado a la SEP</span>
       </div>
 
