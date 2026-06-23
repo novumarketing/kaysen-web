@@ -54,7 +54,7 @@ export default function Footer() {
         <Link href="/aviso-privacidad" className="foot-link" style={{ color: "#9fb6bd", textDecoration: "none" }}>Aviso de privacidad</Link>
         <span>
           Desarrollado por{" "}
-          <a href="https://wa.me/527711238085" target="_blank" rel="noopener noreferrer" className="foot-link" style={{ color: "var(--cyan)", textDecoration: "none", fontWeight: 700 }}>NOVU</a>
+          <a href="https://novu-web-ten.vercel.app/" target="_blank" rel="noopener noreferrer" className="foot-link" style={{ color: "var(--cyan)", textDecoration: "none", fontWeight: 700 }}>NOVU</a>
         </span>
         <span>Incorporado a la SEP</span>
       </div>
