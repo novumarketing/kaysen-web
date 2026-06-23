@@ -1,79 +1,87 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { PageHero, SectionHead } from "@/components/ui";
-import { WA } from "@/components/site";
+import Icon from "@/components/Icon";
+import Reveal from "@/components/Reveal";
+import { PageHero, SectionHead, CtaBand } from "@/components/ui";
+import { PASOS, CALENDARIO, REQUISITOS, BECAS } from "@/components/site";
 
 export const metadata: Metadata = {
-  title: "Admisiones",
-  description: "Proceso de admisión, requisitos, fechas y becas del Colegio Universitario Kaysen en Tulancingo. Inscripciones abiertas.",
+  title: "Admisiones 2026–2027",
+  description: "Asegura el lugar de tu hijo en cuatro pasos. Calendario de admisión, requisitos y becas de hasta 40% en la Preparatoria Kaysen, Tulancingo.",
 };
-
-const pasos = [
-  { n: 1, t: "Solicita informes", d: "Escríbenos por WhatsApp o llámanos y agenda una visita al colegio." },
-  { n: 2, t: "Examen diagnóstico", d: "Evaluación amigable para conocer el nivel del aspirante." },
-  { n: 3, t: "Entrega de documentos", d: "Reúnes la documentación requerida para la inscripción." },
-  { n: 4, t: "¡Bienvenido a Kaysen!", d: "Firma de inscripción, asignación de grupo y kit de bienvenida." },
-];
-const requisitos = ["Certificado de secundaria (o constancia de estudios)", "Acta de nacimiento (original y copia)", "CURP actualizada", "4 fotografías tamaño infantil", "Comprobante de domicilio", "Identificación del padre o tutor"];
 
 export default function Admisiones() {
   return (
     <main>
-      <PageHero kicker="Admisiones" title={<>Inscribir a tu hijo es <span className="grad-text">muy sencillo</span></>}
-        sub="Inscripciones abiertas para el próximo ciclo escolar. El cupo por grupo es limitado." />
+      <PageHero
+        eyebrow="Admisiones 2026–2027"
+        title={<>Asegura el lugar de tu hijo en <span className="serif-accent">cuatro pasos</span></>}
+        sub="Cupo limitado por grupo. Todo el proceso lo realizas acompañado de un asesor. Becas de hasta 40%."
+      />
 
-      <section className="py-20 md:py-24">
-        <div className="wrap">
-          <SectionHead center kicker="Proceso" title="Cuatro pasos para asegurar su lugar" />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {pasos.map((p) => (
-              <div key={p.n} className="rounded-xl2 border border-line bg-white p-7">
-                <div className="mb-4 grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-gold to-[#d18f24] font-display text-lg font-extrabold text-white">{p.n}</div>
-                <h4 className="font-display text-[17px] font-semibold text-navy">{p.t}</h4>
-                <p className="mt-1.5 text-sm text-muted">{p.d}</p>
-              </div>
+      {/* Pasos */}
+      <section className="wrap" style={{ maxWidth: 1100, paddingTop: "clamp(40px,6vw,72px)", paddingBottom: "clamp(40px,6vw,72px)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))", gap: 22 }}>
+          {PASOS.map((s) => (
+            <Reveal key={s.n} style={{ background: "var(--surface)", border: "1px solid var(--bd)", borderRadius: 22, padding: 28 }}>
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 40, color: "var(--cyan-100)", lineHeight: 1 }}>{s.n}</div>
+              <h3 className="h3" style={{ fontSize: 19, marginTop: 10 }}>{s.title}</h3>
+              <p style={{ color: "var(--ink-600)", marginTop: 8, fontSize: 14.5 }}>{s.desc}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* Calendario */}
+      <section className="band-bg2">
+        <div className="wrap-narrow" style={{ paddingTop: "clamp(48px,7vw,90px)", paddingBottom: "clamp(48px,7vw,90px)" }}>
+          <SectionHead center eyebrow="Fechas clave" title="Calendario de admisión · Ciclo 2026–2027" />
+          <div style={{ marginTop: 40, display: "flex", flexDirection: "column", gap: 14 }}>
+            {CALENDARIO.map((c) => (
+              <Reveal key={c.mes} style={{ background: "var(--surface)", border: "1px solid var(--bd)", borderRadius: 18, padding: "22px 26px", display: "flex", gap: 22, alignItems: "center" }}>
+                <div style={{ flex: "none", width: 120, fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 18, color: "var(--cyan-d)" }}>{c.mes}</div>
+                <div style={{ width: 1, alignSelf: "stretch", background: "var(--bd)" }} />
+                <div><div style={{ fontWeight: 700, color: "var(--ink)", fontSize: 17 }}>{c.title}</div><div style={{ color: "var(--ink-600)", fontSize: 14.5, marginTop: 3 }}>{c.desc}</div></div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-bg-2 py-20 md:py-24">
-        <div className="wrap grid gap-12 md:grid-cols-2">
-          <div>
-            <SectionHead kicker="Requisitos" title="Lo que necesitas para inscribir" />
-            <ul className="grid gap-3">
-              {requisitos.map((r) => (
-                <li key={r} className="flex items-center gap-3 rounded-xl border border-line bg-white px-5 py-4 text-[14.5px] text-ink"><span className="font-extrabold text-blue">✓</span> {r}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <SectionHead kicker="Becas y apoyos" title="Apoyamos tu esfuerzo" />
-            <div className="rounded-xl2 border border-line bg-white p-8">
-              <p className="text-[15.5px] text-muted">Contamos con becas académicas, deportivas y de continuidad, sujetas a evaluación y disponibilidad. Nuestro objetivo es que ningún alumno con ganas de estudiar se quede sin la oportunidad.</p>
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-xl bg-bg-2 p-5 text-center"><div className="font-display text-2xl font-extrabold text-blue">Hasta 40%</div><div className="mt-1 text-[13px] text-muted">de beca académica</div></div>
-                <div className="rounded-xl bg-bg-2 p-5 text-center"><div className="font-display text-2xl font-extrabold text-blue">Planes</div><div className="mt-1 text-[13px] text-muted">de pago accesibles</div></div>
+      {/* Requisitos + Becas */}
+      <section className="wrap two-col" style={{ paddingTop: "clamp(48px,7vw,90px)", paddingBottom: "clamp(48px,7vw,90px)", display: "grid", gridTemplateColumns: "1fr 1.1fr", gap: "clamp(32px,5vw,56px)" }}>
+        <Reveal>
+          <div className="eyebrow">Requisitos</div>
+          <h2 className="h2" style={{ fontSize: "clamp(24px,3vw,34px)", margin: "12px 0 22px" }}>Lo que necesitas para inscribir</h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            {REQUISITOS.map((r) => (
+              <div key={r} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                <span style={{ flex: "none", width: 26, height: 26, borderRadius: "50%", background: "var(--cyan-50)", color: "var(--cyan-d)", display: "flex", alignItems: "center", justifyContent: "center", marginTop: 1 }}><Icon name="Check" size={15} /></span>
+                <span style={{ color: "var(--ink-700)", fontSize: 15.5 }}>{r}</span>
               </div>
-              <p className="mt-6 text-[13.5px] text-muted">* Becas sujetas a promedio, evaluación socioeconómica y disponibilidad de lugares.</p>
-            </div>
+            ))}
           </div>
-        </div>
+        </Reveal>
+        <Reveal>
+          <div className="eyebrow">Becas y apoyos</div>
+          <h2 className="h2" style={{ fontSize: "clamp(24px,3vw,34px)", margin: "12px 0 22px" }}>Apoyamos tu inversión</h2>
+          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+            {BECAS.map((b) => (
+              <div key={b.title} style={{ background: "var(--surface)", border: "1px solid var(--bd)", borderRadius: 18, padding: 22, display: "flex", gap: 16, alignItems: "center" }}>
+                <div style={{ flex: "none", width: 48, height: 48, borderRadius: 13, background: "var(--cyan-50)", color: "var(--cyan-d)", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name={b.icon as any} size={23} /></div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
+                    <span style={{ fontWeight: 700, color: "var(--ink)", fontSize: 17 }}>{b.title}</span>
+                    <span style={{ background: "var(--cyan)", color: "#fff", fontWeight: 700, fontSize: 12, padding: "3px 10px", borderRadius: 999 }}>{b.tag}</span>
+                  </div>
+                  <div style={{ color: "var(--ink-600)", fontSize: 14, marginTop: 4 }}>{b.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </section>
 
-      <section className="py-20">
-        <div className="wrap">
-          <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-navy to-blue px-8 py-16 text-center">
-            <div className="pointer-events-none absolute -right-16 -top-28 h-80 w-80 rounded-full bg-gold/25 blur-3xl" />
-            <h2 className="relative font-display text-[clamp(27px,3.8vw,38px)] font-bold text-white">Empieza el proceso hoy</h2>
-            <p className="relative mx-auto mt-3.5 max-w-xl text-[17px] text-[#d3e0f2]">Cupo limitado por grupo. Solicita informes y agenda el examen diagnóstico de tu hijo.</p>
-            <div className="relative mt-7 flex flex-wrap justify-center gap-3.5">
-              <a href={WA} target="_blank" rel="noopener noreferrer" className="btn btn-gold">Solicitar informes por WhatsApp</a>
-              <Link href="/contacto" className="btn btn-ghost">Ir a contacto</Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CtaBand title="Comienza el proceso hoy" sub="Te enviamos la lista de precios y agendamos tu recorrido el mismo día." variant="cyan" primary="informes" />
     </main>
   );
 }
