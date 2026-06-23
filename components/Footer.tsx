@@ -1,35 +1,66 @@
 import Link from "next/link";
-import { NAV, PHONE, EMAIL, ADDRESS } from "./site";
+import Icon from "./Icon";
+import { NAV, PHONE, PHONE_HREF, EMAIL, ADDRESS, FACEBOOK, INSTAGRAM } from "./site";
 
 export default function Footer() {
   return (
-    <footer className="bg-navy pt-16 pb-7 text-[#cdd9e7]">
-      <div className="wrap">
-        <div className="grid gap-10 border-b border-white/10 pb-9 md:grid-cols-[1.4fr_1fr_1fr]">
-          <div>
-            <div className="mb-4 flex items-center gap-3">
-              <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-navy to-blue font-display text-lg font-extrabold text-white">K</div>
-              <div className="leading-tight"><b className="block font-display text-[17px] font-bold text-white">Colegio Kaysen</b><span className="text-[11px] uppercase tracking-[0.14em] text-[#aebfd2]">Bachillerato General</span></div>
-            </div>
-            <p className="max-w-xs text-sm text-[#aebfd2]">Preparatoria Colegio Universitario Kaysen. Formación académica de excelencia en el corazón de Tulancingo, Hidalgo.</p>
+    <footer style={{ background: "var(--ink)", color: "#9fb6bd" }}>
+      <div className="wrap footer-grid" style={{ paddingTop: "clamp(48px,6vw,80px)", display: "grid", gridTemplateColumns: "1.4fr 1fr 1.2fr", gap: 40 }}>
+        <div>
+          <div style={{ background: "#fff", borderRadius: 14, padding: "12px 16px", display: "inline-block" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo-kaysen.jpg" alt="Colegio Kaysen" style={{ height: 46, display: "block", mixBlendMode: "multiply" }} />
           </div>
-          <div>
-            <h5 className="mb-4 font-display text-sm uppercase tracking-wide text-white">Navegación</h5>
-            <ul className="grid gap-2.5">{NAV.map((n) => (<li key={n.href}><Link href={n.href} className="text-sm text-[#aebfd2] transition hover:text-white">{n.label}</Link></li>))}</ul>
-          </div>
-          <div>
-            <h5 className="mb-4 font-display text-sm uppercase tracking-wide text-white">Contacto</h5>
-            <ul className="grid gap-2.5 text-sm text-[#aebfd2]"><li>{PHONE}</li><li>{EMAIL}</li><li>{ADDRESS}</li></ul>
+          <p style={{ margin: "18px 0 0", maxWidth: 330, fontSize: 15, lineHeight: 1.6 }}>
+            Preparatoria Colegio Universitario Kaysen. Formación académica de excelencia en el corazón de Tulancingo, Hidalgo.
+          </p>
+          <div style={{ display: "flex", gap: 10, marginTop: 18 }}>
+            <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="soc">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06C2 17.06 5.66 21.2 10.44 22v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.91h-2.34V22C18.34 21.2 22 17.06 22 12.06Z" /></svg>
+            </a>
+            <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="soc">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" /></svg>
+            </a>
           </div>
         </div>
-        <div className="flex flex-wrap items-center justify-between gap-2.5 pt-6 text-[13px] text-[#90a3ba]">
-          <span>© {new Date().getFullYear()} Colegio Universitario Kaysen. Todos los derechos reservados.</span>
-          <div className="flex items-center gap-4">
-            <Link href="/aviso-privacidad" className="transition hover:text-white">Aviso de Privacidad</Link>
-            <span>Desarrollado por <a href="https://novu-web-ten.vercel.app" target="_blank" rel="noopener noreferrer" className="font-semibold text-gold">NOVU</a></span>
+
+        <div>
+          <div style={{ color: "#fff", fontWeight: 700, fontSize: 15, textTransform: "uppercase", letterSpacing: ".08em", marginBottom: 16 }}>Navegación</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
+            {NAV.map((n) => (
+              <Link key={n.href} href={n.href} className="foot-link" style={{ color: "#9fb6bd", fontSize: 15, textDecoration: "none" }}>{n.label}</Link>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div style={{ color: "#fff", fontWeight: 700, fontSize: 15, textTransform: "uppercase", letterSpacing: ".08em", marginBottom: 16 }}>Contacto</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 13, fontSize: 15 }}>
+            <a href={PHONE_HREF} className="foot-link" style={{ color: "#9fb6bd", textDecoration: "none", display: "flex", gap: 10, alignItems: "flex-start" }}>
+              <Icon name="Phone" size={17} style={{ color: "var(--cyan)", marginTop: 1 }} />{PHONE}
+            </a>
+            <a href={`mailto:${EMAIL}`} className="foot-link" style={{ color: "#9fb6bd", textDecoration: "none", display: "flex", gap: 10, alignItems: "flex-start" }}>
+              <Icon name="Mail" size={17} style={{ color: "var(--cyan)", marginTop: 1 }} />{EMAIL}
+            </a>
+            <div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+              <Icon name="MapPin" size={17} style={{ color: "var(--cyan)", marginTop: 1, flex: "none" }} />{ADDRESS}
+            </div>
           </div>
         </div>
       </div>
+
+      <div className="wrap" style={{ paddingTop: 28, paddingBottom: 28, marginTop: 48, borderTop: "1px solid rgba(255,255,255,.12)", display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "space-between", fontSize: 13 }}>
+        <span>© 2026 Colegio Universitario Kaysen. Todos los derechos reservados.</span>
+        <Link href="/aviso-privacidad" className="foot-link" style={{ color: "#9fb6bd", textDecoration: "none" }}>Aviso de privacidad</Link>
+        <span>Incorporado a la SEP</span>
+      </div>
+
+      <style>{`
+        .soc { width: 38px; height: 38px; border-radius: 10px; border: 1px solid rgba(255,255,255,.14); display: flex; align-items: center; justify-content: center; color: #9fb6bd; text-decoration: none; transition: all .2s; }
+        .soc:hover { background: var(--cyan); color: #fff; border-color: var(--cyan); }
+        .foot-link:hover { color: var(--cyan) !important; }
+        @media (max-width: 880px) { .footer-grid { grid-template-columns: 1fr !important; } }
+      `}</style>
     </footer>
   );
 }
