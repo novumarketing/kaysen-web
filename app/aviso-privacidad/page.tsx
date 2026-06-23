@@ -3,44 +3,44 @@ import { PageHero } from "@/components/ui";
 import { EMAIL, PHONE, ADDRESS } from "@/components/site";
 
 export const metadata: Metadata = {
-  title: "Aviso de Privacidad",
-  description: "Aviso de Privacidad del Colegio Universitario Kaysen conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.",
-  robots: { index: true, follow: false },
+  title: "Aviso de privacidad",
+  description: "Aviso de privacidad de la Preparatoria Colegio Universitario Kaysen.",
+  robots: { index: false, follow: true },
 };
 
-function Block({ title, children }: { title: string; children: React.ReactNode }) {
+function P({ h, children }: { h: string; children: React.ReactNode }) {
   return (
-    <div className="mb-7">
-      <h2 className="mb-2 font-display text-xl font-semibold text-navy">{title}</h2>
-      <div className="space-y-2 text-[15px] leading-relaxed text-muted">{children}</div>
+    <div style={{ marginTop: 28 }}>
+      <h2 className="h3" style={{ fontSize: 20, color: "var(--cyan-d)" }}>{h}</h2>
+      <p style={{ color: "var(--ink-600)", fontSize: 15.5, lineHeight: 1.7, marginTop: 8 }}>{children}</p>
     </div>
   );
 }
 
-export default function AvisoPrivacidad() {
+export default function Aviso() {
   return (
     <main>
-      <PageHero kicker="Legal" title={<>Aviso de <span className="grad-text">Privacidad</span></>}
-        sub="Protección de tus datos personales conforme a la legislación mexicana vigente." />
-      <section className="py-16 md:py-20">
-        <div className="wrap max-w-3xl">
-          <p className="mb-8 text-[15px] leading-relaxed text-muted">
-            El <strong className="text-navy">Colegio Universitario Kaysen</strong>, con domicilio en {ADDRESS}, es responsable del tratamiento de sus datos personales conforme a la <strong className="text-navy">Ley Federal de Protección de Datos Personales en Posesión de los Particulares</strong>.
-          </p>
-          <Block title="1. Datos que recabamos">
-            <p>Nombre del aspirante y del padre o tutor, teléfono, correo electrónico y la información necesaria para atender solicitudes de informes e inscripción.</p>
-          </Block>
-          <Block title="2. Finalidades">
-            <p>Los datos se utilizan para brindar informes, dar seguimiento al proceso de admisión, agendar visitas y enviar comunicaciones relacionadas con nuestros servicios educativos. No se comparten con terceros con fines comerciales.</p>
-          </Block>
-          <Block title="3. Derechos ARCO">
-            <p>Usted puede ejercer en cualquier momento sus derechos de Acceso, Rectificación, Cancelación u Oposición (ARCO), así como revocar su consentimiento, enviando su solicitud al correo {EMAIL} o al teléfono {PHONE}.</p>
-          </Block>
-          <Block title="4. Cambios al aviso">
-            <p>Este Aviso de Privacidad puede actualizarse. Cualquier modificación se publicará en este mismo sitio web.</p>
-          </Block>
-          <p className="mt-8 text-[13px] text-muted">Documento de referencia. Te recomendamos validar su contenido con tu asesor legal antes de publicarlo de forma definitiva.</p>
-        </div>
+      <PageHero eyebrow="Legal" title="Aviso de privacidad" sub="Tu confianza es importante para nosotros. Así protegemos y usamos tus datos personales." />
+      <section className="wrap-narrow" style={{ paddingTop: "clamp(36px,5vw,56px)", paddingBottom: "clamp(56px,8vw,90px)" }}>
+        <P h="Responsable">
+          El Colegio Universitario Kaysen, con domicilio en {ADDRESS}, es responsable del tratamiento de tus datos personales conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.
+        </P>
+        <P h="Datos que recabamos">
+          Recabamos nombre, teléfono, correo electrónico y los datos que nos proporciones al solicitar informes, agendar un recorrido o iniciar el proceso de admisión. No solicitamos datos sensibles a través de este sitio.
+        </P>
+        <P h="Finalidades">
+          Usamos tus datos para brindarte información sobre nuestra oferta educativa, costos y becas; dar seguimiento a tu solicitud; agendar recorridos; y gestionar el proceso de admisión e inscripción.
+        </P>
+        <P h="Transferencias">
+          No transferimos tus datos a terceros sin tu consentimiento, salvo las excepciones previstas por la ley.
+        </P>
+        <P h="Derechos ARCO">
+          Puedes ejercer tus derechos de Acceso, Rectificación, Cancelación u Oposición, así como revocar tu consentimiento, escribiendo a {EMAIL} o al WhatsApp {PHONE}.
+        </P>
+        <P h="Cambios al aviso">
+          Este aviso puede actualizarse. Publicaremos cualquier cambio en esta misma página.
+        </P>
+        <p style={{ color: "var(--ink-500)", fontSize: 13, marginTop: 32 }}>Última actualización: junio de 2026.</p>
       </section>
     </main>
   );
