@@ -1,50 +1,46 @@
 import type { Metadata } from "next";
-import { PageHero, SectionHead } from "@/components/ui";
-import { PHONE, EMAIL, ADDRESS, WA } from "@/components/site";
+import Icon from "@/components/Icon";
+import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
-import LazyMap from "@/components/LazyMap";
-import { MapPin, Phone, Mail, MessageCircle, type LucideIcon } from "lucide-react";
+import { PageHero } from "@/components/ui";
+import { WA_INFORMES, PHONE, PHONE_HREF, EMAIL, ADDRESS } from "@/components/site";
 
 export const metadata: Metadata = {
   title: "Contacto",
-  description: "Contacta a la Preparatoria Colegio Universitario Kaysen en Tulancingo, Hidalgo. Teléfono, correo, ubicación y formulario de informes.",
+  description: "Solicita informes, la lista de precios o agenda un recorrido por la Preparatoria Kaysen en Tulancingo. Te respondemos el mismo día.",
 };
-
-function Info({ icon: Icon, title, children }: { icon: LucideIcon; title: string; children: React.ReactNode }) {
-  return (
-    <div className="mb-5 flex items-start gap-4">
-      <div className="grid h-11 w-11 flex-none place-items-center rounded-[13px] bg-blue-soft"><Icon className="h-5 w-5 text-blue" strokeWidth={1.75} aria-hidden /></div>
-      <div><b className="block font-display text-[15px] text-navy">{title}</b><p className="text-[14.5px] text-muted">{children}</p></div>
-    </div>
-  );
-}
 
 export default function Contacto() {
   return (
     <main>
-      <PageHero kicker="Contacto" title={<>Da el <span className="grad-text">primer paso</span> hoy</>}
-        sub="Déjanos tus datos y un asesor del colegio te contactará para resolver todas tus dudas." />
+      <PageHero
+        eyebrow="Contacto"
+        title={<>Estamos para <span className="serif-accent">ayudarte</span></>}
+        sub="Solicita informes, la lista de precios o agenda un recorrido. Te respondemos el mismo día."
+      />
 
-      <section className="py-20 md:py-24">
-        <div className="wrap grid items-start gap-12 md:grid-cols-[1fr_1.1fr]">
-          <div>
-            <SectionHead kicker="Datos de contacto" title="Estamos para ayudarte" />
-            <Info icon={MapPin} title="Visítanos">{ADDRESS}</Info>
-            <Info icon={Phone} title="Llámanos">{PHONE} · Lun a Vie, turno matutino</Info>
-            <Info icon={Mail} title="Escríbenos">{EMAIL}</Info>
-            <Info icon={MessageCircle} title="WhatsApp">Respuesta inmediata en horario escolar</Info>
-            <a href={WA} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-2">Escribir por WhatsApp</a>
+      <section className="wrap two-col" style={{ paddingTop: "clamp(36px,5vw,64px)", paddingBottom: "clamp(56px,8vw,100px)", display: "grid", gridTemplateColumns: "1fr 1.1fr", gap: "clamp(32px,5vw,56px)" }}>
+        <Reveal style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <a href={WA_INFORMES} target="_blank" rel="noopener noreferrer" style={{ background: "var(--ink)", borderRadius: 20, padding: 26, display: "flex", gap: 16, alignItems: "center", textDecoration: "none" }}>
+            <span style={{ flex: "none", width: 50, height: 50, borderRadius: 14, background: "var(--wa)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="MessageCircle" size={24} /></span>
+            <div><div style={{ color: "#fff", fontWeight: 700, fontSize: 17 }}>WhatsApp</div><div style={{ color: "#9fb6bd", fontSize: 14 }}>Respuesta el mismo día · {PHONE}</div></div>
+          </a>
+          <a href={PHONE_HREF} style={{ background: "var(--surface)", border: "1px solid var(--bd)", borderRadius: 20, padding: 26, display: "flex", gap: 16, alignItems: "center", textDecoration: "none" }}>
+            <span style={{ flex: "none", width: 50, height: 50, borderRadius: 14, background: "var(--cyan-50)", color: "var(--cyan-d)", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="Phone" size={23} /></span>
+            <div><div style={{ color: "var(--ink)", fontWeight: 700, fontSize: 17 }}>Teléfono</div><div style={{ color: "var(--ink-600)", fontSize: 15 }}>{PHONE}</div></div>
+          </a>
+          <a href={`mailto:${EMAIL}`} style={{ background: "var(--surface)", border: "1px solid var(--bd)", borderRadius: 20, padding: 26, display: "flex", gap: 16, alignItems: "center", textDecoration: "none" }}>
+            <span style={{ flex: "none", width: 50, height: 50, borderRadius: 14, background: "var(--cyan-50)", color: "var(--cyan-d)", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="Mail" size={22} /></span>
+            <div><div style={{ color: "var(--ink)", fontWeight: 700, fontSize: 17 }}>Correo</div><div style={{ color: "var(--ink-600)", fontSize: 15 }}>{EMAIL}</div></div>
+          </a>
+          <div style={{ background: "var(--surface)", border: "1px solid var(--bd)", borderRadius: 20, padding: 26, display: "flex", gap: 16, alignItems: "flex-start" }}>
+            <span style={{ flex: "none", width: 50, height: 50, borderRadius: 14, background: "var(--cyan-50)", color: "var(--cyan-d)", display: "flex", alignItems: "center", justifyContent: "center" }}><Icon name="MapPin" size={22} /></span>
+            <div><div style={{ color: "var(--ink)", fontWeight: 700, fontSize: 17 }}>Dirección</div><div style={{ color: "var(--ink-600)", fontSize: 15 }}>{ADDRESS}</div></div>
           </div>
+        </Reveal>
+        <Reveal>
           <ContactForm />
-        </div>
-      </section>
-
-      {/* Mapa con lazy loading (no afecta el LCP) */}
-      <section className="pb-20 md:pb-24">
-        <div className="wrap">
-          <SectionHead center kicker="Ubicación" title="Encuéntranos en el centro de Tulancingo" />
-          <LazyMap />
-        </div>
+        </Reveal>
       </section>
     </main>
   );
