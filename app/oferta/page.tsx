@@ -1,80 +1,80 @@
 import type { Metadata } from "next";
-import { FlaskConical, BookOpen, Ruler } from "lucide-react";
+import Icon from "@/components/Icon";
+import Reveal from "@/components/Reveal";
 import { PageHero, SectionHead, CtaBand } from "@/components/ui";
-import { WA } from "@/components/site";
+import { AREAS } from "@/components/site";
 
 export const metadata: Metadata = {
   title: "Oferta académica",
-  description: "Bachillerato General del Colegio Kaysen con áreas de Ciencias Experimentales, Ciencias Sociales y Físico-Matemáticas. Plan de estudios y actividades.",
+  description: "Bachillerato general con tres áreas de especialización: Ciencias Experimentales, Ciencias Sociales y Físico-Matemáticas. Validez oficial SEP en Tulancingo.",
 };
 
-const areas = [
-  { icon: FlaskConical, title: "Ciencias Experimentales", desc: "Ruta ideal hacia medicina, enfermería, ingenierías y ciencias de la salud.", items: ["Laboratorios de Física, Química y Biología", "Preparación para examen de admisión", "Proyectos de investigación"] },
-  { icon: BookOpen, title: "Ciencias Sociales y Humanidades", desc: "Para quienes buscan derecho, comunicación, psicología o administración.", items: ["Pensamiento crítico y argumentación", "Talleres de oratoria y escritura", "Orientación vocacional"] },
-  { icon: Ruler, title: "Físico-Matemáticas", desc: "Base sólida para ingenierías, arquitectura y carreras de tecnología.", items: ["Matemáticas aplicadas", "Cómputo y programación", "Olimpiadas del conocimiento"] },
-];
-const plan = [
-  { s: "1º y 2º semestre", d: "Tronco común: matemáticas, química, ética, lengua, informática y formación básica." },
-  { s: "3º y 4º semestre", d: "Profundización en ciencias, humanidades e inglés, con orientación vocacional." },
-  { s: "5º y 6º semestre", d: "Especialización en el área elegida y preparación para el examen de admisión." },
-];
-const extras = ["Inglés en todos los semestres", "Talleres culturales y deportivos", "Orientación vocacional permanente", "Asesorías académicas", "Actividades cívicas y sociales", "Preparación para la universidad"];
+const carreras: Record<string, string> = {
+  "Ciencias Experimentales": "medicina, ingenierías y ciencias de la salud.",
+  "Ciencias Sociales": "derecho, comunicación, psicología y administración.",
+  "Físico-Matemáticas": "ingenierías, arquitectura y tecnología.",
+};
 
 export default function Oferta() {
   return (
     <main>
-      <PageHero kicker="Oferta académica" title={<>Un bachillerato que <span className="grad-text">abre puertas</span></>}
-        sub="Bachillerato General con validez oficial ante la SEP (CCT 13PBH0319R), turno matutino, con tres áreas de especialización." />
+      <PageHero
+        eyebrow="Oferta académica"
+        title={<>Bachillerato general con tres áreas de <span className="serif-accent">especialización</span></>}
+        sub="Un tronco común sólido durante los primeros semestres y, al final del bachillerato, la especialización alineada con la carrera universitaria que tu hijo quiere estudiar."
+      />
 
-      <section className="py-20 md:py-24">
-        <div className="wrap">
-          <SectionHead center kicker="Áreas de especialización" title="Elige el camino que más te apasiona" sub="En quinto y sexto semestre cada alumno se especializa según la carrera que desea estudiar." />
-          <div className="grid gap-6 md:grid-cols-3">
-            {areas.map((a) => {
-              const Icon = a.icon;
-              return (
-              <div key={a.title} className="rounded-xl2 border border-line bg-white p-8 transition hover:-translate-y-1.5 hover:border-[#cfe0fb] hover:shadow-soft">
-                <div className="mb-4 grid h-14 w-14 place-items-center rounded-[15px] bg-gradient-to-br from-blue to-navy text-white"><Icon className="h-7 w-7" strokeWidth={1.75} aria-hidden /></div>
-                <h3 className="font-display text-[19px] font-semibold text-navy">{a.title}</h3>
-                <p className="mt-2 text-[14.5px] text-muted">{a.desc}</p>
-                <ul className="mt-3.5 grid gap-2">
-                  {a.items.map((it) => (<li key={it} className="flex items-center gap-2.5 text-[13.8px] text-ink"><span className="font-extrabold text-blue">✓</span> {it}</li>))}
-                </ul>
+      <section className="wrap" style={{ paddingTop: "clamp(40px,6vw,72px)", paddingBottom: "clamp(40px,6vw,72px)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(290px,1fr))", gap: 24 }}>
+          {AREAS.map((a) => (
+            <Reveal key={a.title} className="card-hover" style={{ background: "var(--surface)", border: "1px solid var(--bd)", borderRadius: 24, overflow: "hidden", boxShadow: "0 2px 6px rgba(12,39,51,.05)" }}>
+              <div style={{ height: 120, background: "var(--bg2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <span style={{ color: "var(--cyan-d)" }}><Icon name={a.icon as any} size={44} /></span>
               </div>
-              );
-            })}
-          </div>
+              <div style={{ padding: 28 }}>
+                <h3 className="h3" style={{ fontSize: 22 }}>{a.title}</h3>
+                <p style={{ color: "var(--ink-600)", marginTop: 8, fontSize: 15 }}>Orientada a carreras como {carreras[a.title]}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </section>
 
-      <section className="bg-bg-2 py-20 md:py-24">
-        <div className="wrap">
-          <SectionHead center kicker="Plan de estudios" title="Una ruta de 6 semestres bien acompañada" />
-          <div className="mx-auto grid max-w-3xl gap-4">
-            {plan.map((p, i) => (
-              <div key={p.s} className="flex items-start gap-5 rounded-xl2 border border-line bg-white p-6">
-                <div className="grid h-11 w-11 flex-none place-items-center rounded-xl bg-gradient-to-br from-blue to-navy font-display font-extrabold text-white">{i + 1}</div>
-                <div><h4 className="font-display text-[17px] font-semibold text-navy">{p.s}</h4><p className="mt-1 text-[14.5px] text-muted">{p.d}</p></div>
+      {/* Plan de estudios */}
+      <section className="band-bg2">
+        <div className="wrap-narrow" style={{ paddingTop: "clamp(48px,7vw,90px)", paddingBottom: "clamp(48px,7vw,90px)" }}>
+          <SectionHead center eyebrow="Plan de estudios" title="Un camino de seis semestres" />
+          <div className="two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginTop: 40 }}>
+            <Reveal style={{ background: "var(--surface)", border: "1px solid var(--bd)", borderRadius: 22, padding: 32 }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "var(--cyan-50)", color: "var(--cyan-dd)", fontWeight: 700, fontSize: 13, padding: "6px 13px", borderRadius: 999 }}>1º – 4º semestre</div>
+              <h3 className="h3" style={{ marginTop: 16 }}>Tronco común</h3>
+              <p style={{ color: "var(--ink-600)", margin: "8px 0 14px", fontSize: 15 }}>Bases académicas sólidas en todas las áreas del conocimiento.</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
+                {["Matemáticas, ciencias y humanidades", "Lengua, comunicación e inglés", "Hábitos de estudio y tutoría"].map((t) => (
+                  <span key={t} style={{ display: "flex", gap: 9, alignItems: "center", fontSize: 14.5, color: "var(--ink-700)" }}><span style={{ color: "var(--cyan-d)", display: "flex" }}><Icon name="Check" size={17} /></span>{t}</span>
+                ))}
               </div>
+            </Reveal>
+            <Reveal style={{ background: "var(--ink)", color: "#fff", borderRadius: 22, padding: 32 }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(22,166,206,.18)", color: "var(--cyan)", fontWeight: 700, fontSize: 13, padding: "6px 13px", borderRadius: 999 }}>5º – 6º semestre</div>
+              <h3 className="h3" style={{ marginTop: 16, color: "#fff" }}>Especialización</h3>
+              <p style={{ color: "#bcd0d6", margin: "8px 0 14px", fontSize: 15 }}>Tu hijo elige el área alineada con la carrera que quiere estudiar.</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 9 }}>
+                {["Ciencias Experimentales", "Ciencias Sociales", "Físico-Matemáticas"].map((t) => (
+                  <span key={t} style={{ display: "flex", gap: 9, alignItems: "center", fontSize: 14.5, color: "#dce8ec" }}><span style={{ color: "var(--cyan)", display: "flex" }}><Icon name="Check" size={17} /></span>{t}</span>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+          <Reveal style={{ display: "flex", flexWrap: "wrap", gap: 18, justifyContent: "center", marginTop: 34 }}>
+            {[{ i: "ShieldCheck", t: "Validez oficial SEP" }, { i: "GraduationCap", t: "Preparación para examen de admisión" }, { i: "Compass", t: "Orientación vocacional" }].map((s) => (
+              <span key={s.t} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 15, fontWeight: 600, color: "var(--ink-700)" }}><span style={{ color: "var(--cyan-d)", display: "flex" }}><Icon name={s.i as any} size={18} /></span>{s.t}</span>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      <section className="py-20 md:py-24">
-        <div className="wrap">
-          <SectionHead center kicker="Formación integral" title="Mucho más que materias" sub="Complementamos lo académico con actividades que forman al alumno por completo." />
-          <div className="mx-auto grid max-w-3xl gap-3 sm:grid-cols-2">
-            {extras.map((e) => (
-              <div key={e} className="flex items-center gap-3 rounded-xl border border-line bg-white px-5 py-4 text-[14.5px] text-ink">
-                <span className="font-extrabold text-blue">✓</span> {e}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CtaBand title="¿Listo para conocer el plan completo?" sub="Escríbenos y te enviamos el plan de estudios detallado y los costos del ciclo escolar." href={WA} label="Solicitar informes por WhatsApp" />
+      <CtaBand title="¿Listo para conocer el plan completo?" sub="Solicita informes y te enviamos el plan de estudios y la lista de precios el mismo día." variant="ink" primary="informes" showSecondary={false} />
     </main>
   );
 }
