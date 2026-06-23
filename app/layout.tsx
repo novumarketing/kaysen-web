@@ -1,19 +1,17 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Bricolage_Grotesque, Hanken_Grotesk, Spectral } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import WhatsApp from "@/components/WhatsApp";
-import StickyCTA from "@/components/StickyCTA";
+import ChatAssistant from "@/components/ChatAssistant";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const poppins = Poppins({ subsets: ["latin"], weight: ["500", "600", "700", "800"], variable: "--font-poppins" });
+const display = Bricolage_Grotesque({ subsets: ["latin"], weight: ["400", "600", "700", "800"], variable: "--font-display", display: "swap" });
+const hanken = Hanken_Grotesk({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700", "800"], variable: "--font-hanken", display: "swap" });
+const spectral = Spectral({ subsets: ["latin"], weight: ["500"], style: ["italic"], variable: "--font-spectral", display: "swap" });
 
 const SITE = "https://kaysen-web.vercel.app";
-
-// SEO LOCAL (punto 5) — App Router Metadata API (reemplaza a <Head>)
 const OG_DESC =
-  "Preparamos a tu hijo para el éxito universitario: El 98% de nuestros egresados lo logran. Conoce nuestra oferta educativa y proceso de admisión.";
+  "Preparamos a tu hijo para el éxito universitario: el 98% de nuestros egresados lo logra. Bachillerato con validez SEP en Tulancingo, Hidalgo. Becas hasta 40%.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -29,7 +27,7 @@ export const metadata: Metadata = {
     "prepa en Tulancingo",
     "mejor preparatoria Tulancingo",
     "Preparatoria Kaysen",
-    "Colegio Kaysen",
+    "Colegio Universitario Kaysen",
     "preparatoria privada Tulancingo",
   ],
   alternates: { canonical: SITE },
@@ -40,14 +38,7 @@ export const metadata: Metadata = {
     siteName: "Colegio Universitario Kaysen",
     locale: "es_MX",
     type: "website",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Preparatoria Kaysen — 98% de egresados a universidad · Tulancingo, Hidalgo",
-      },
-    ],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Preparatoria Kaysen — 98% de egresados a universidad · Tulancingo, Hidalgo" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -58,7 +49,6 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-// Datos estructurados para SEO local (Rich Results / Google Business)
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
@@ -69,7 +59,7 @@ const jsonLd = {
   email: "contacto@colegiokaysen.edu.mx",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Morelos Oriente 304, Col. Centro",
+    streetAddress: "Luis Ponce Norte #907, Col. Centro",
     addressLocality: "Tulancingo de Bravo",
     addressRegion: "Hidalgo",
     postalCode: "43600",
@@ -81,13 +71,12 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="font-sans antialiased">
+    <html lang="es" className={`${display.variable} ${hanken.variable} ${spectral.variable}`}>
+      <body>
         <Nav />
         {children}
         <Footer />
-        <WhatsApp />
-        <StickyCTA />
+        <ChatAssistant />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </body>
     </html>
